@@ -13,6 +13,9 @@
       "jsx": true
     }
   },
+  "globals": {
+    "JSX": true
+  },
   "plugins": ["prettier", "@typescript-eslint", "import", "jsx-a11y"],
   "extends": [
     "plugin:import/errors",

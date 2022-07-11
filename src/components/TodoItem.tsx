@@ -2,18 +2,28 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 
-interface TodoItemProps {
-  id: number;
-  done: boolean;
-  text: string;
-}
+import useTodosDispatch from '../hooks/useTodosDispatch';
 
-const TodoItem = ({ id, done, text }: TodoItemProps) => {
+export type TodoItemProps = {
+  todo: {
+    id: number;
+    done: boolean;
+    text: string;
+  };
+};
+
+const TodoItem = ({ todo }: TodoItemProps) => {
+  const dispatch = useTodosDispatch();
+  const onToggle = () => dispatch({ type: 'TOGGLE', id: todo.id });
+  const onRemove = () => dispatch({ type: 'REMOVE', id: todo.id });
+
   return (
     <TodoItemWarpper>
-      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
-      <Text done={done}>{text}</Text>
-      <Remove>
+      <CheckCircle done={todo.done} onClick={onToggle}>
+        {todo.done && <MdDone />}
+      </CheckCircle>
+      <Text done={todo.done}>{todo.text}</Text>
+      <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
     </TodoItemWarpper>
@@ -75,4 +85,4 @@ const Text = styled.div<{ done: boolean }>`
     `}
 `;
 
-export default TodoItem;
+export default React.memo(TodoItem);

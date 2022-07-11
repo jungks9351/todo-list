@@ -1,18 +1,51 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { MdAdd } from 'react-icons/md';
 import styled, { css } from 'styled-components';
 
+import useTodosDispatch from '../hooks/useTodosDispatch';
+import useTodosState from '../hooks/useTodosState';
+
 const TodoCreate = () => {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+  const todos = useTodosState();
+
+  const dispatch = useTodosDispatch();
 
   const onToggle = () => setOpen(!open);
+
+  const onChange = (e: ChangeEvent) => {
+    const target = e.target as HTMLInputElement;
+    setValue(target.value);
+  };
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!value) return;
+
+    dispatch({
+      type: 'CREATE',
+      todo: {
+        id: todos.length + 1,
+        text: value,
+        done: false,
+      },
+    });
+    setValue('');
+    setOpen(false);
+  };
 
   return (
     <>
       {open && (
         <InsertFormPositioner>
-          <InsertForm>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" />
+          <InsertForm onSubmit={onSubmit}>
+            <Input
+              autoFocus
+              placeholder="할 일을 입력 후, Enter 를 누르세요"
+              onChange={onChange}
+              value={value}
+            />
           </InsertForm>
         </InsertFormPositioner>
       )}

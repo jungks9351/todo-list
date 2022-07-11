@@ -1,5 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
+
+import useTodosState from '../hooks/useTodosState';
 
 const TodoHeader = () => {
   const today = new Date();
@@ -10,11 +11,14 @@ const TodoHeader = () => {
   });
   const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
 
+  const todos = useTodosState();
+  const undoneTasks = todos.filter((todo) => !todo.done);
+
   return (
     <TodoHeaderWrapper>
       <h1>{dateString}</h1>
       <div className="day">{dayName}</div>
-      <div className="tasks-left">할 일 2개 남음</div>
+      <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
     </TodoHeaderWrapper>
   );
 };

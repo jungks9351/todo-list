@@ -1,11 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
+import { Children } from '../type';
 
-interface TodoContainerProps {
-  children?: JSX.Element | JSX.Element[];
-}
-
-const TodoContainer = ({ children }: TodoContainerProps) => {
+const TodoContainer = ({ children }: Children) => {
   return <TodoContainerWrapper>{children}</TodoContainerWrapper>;
 };
 

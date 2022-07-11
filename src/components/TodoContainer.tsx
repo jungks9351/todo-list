@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Children } from '../type';
+import { Children } from '../types';
 
 const TodoContainer = ({ children }: Children) => {
   return <TodoContainerWrapper>{children}</TodoContainerWrapper>;

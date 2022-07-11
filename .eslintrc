@@ -34,7 +34,10 @@
     "no-shadow": "off",
     "react/prop-types": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off"
   },

@@ -1,6 +1,6 @@
 # todo-list
 
-webpack, babel, typescript를 공부하기 위한 프로젝트
+webpack, babel, typescript, ContextAPI를 공부하기 위한 프로젝트
 
 ## 1. webpack
 
@@ -19,3 +19,8 @@ webpack, babel, typescript를 공부하기 위한 프로젝트
 ## 3. typescript
 
 - 정적타입을 미리 정의하여 컴파일 할 때 에러를 미리 확인하고 수정 가능하다.
+
+## 4. ContextAPI
+
+- 전역 상태로 관리를 할수 있다.
+- props를 넘겨주지 않아도 된다.
